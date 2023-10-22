@@ -1,5 +1,6 @@
 package view;
 
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -190,6 +191,13 @@ public class MainGui {
             }
         }
 		
+		
+       int sum = 0;
+	    for (int number : numbers) {
+	        sum += number;
+	    }
+	    double average = (double) sum / numbers.length;
+		
         String name = txtFieldName.getText();
 		
 		 StringBuilder sb = new StringBuilder();
@@ -203,21 +211,21 @@ public class MainGui {
 	            }
 	        }
 			 sb.append("\nMin marks: ").append(minScore);
+			 sb.append("\nAverage marks: ").append(average);
 	        textArea.setText(sb.toString());
 
-		if(chckbxNewCheckBox.isSelected() == true & minScore >= 5) {
+		if(chckbxNewCheckBox.isSelected() == true & minScore >= 5 & average >= 5) {
 			textArea.append("\nScholarship 2000");
 
 		}
-		else if (chckbxNewCheckBox.isSelected() == true & minScore >= 4) {
+		else if (chckbxNewCheckBox.isSelected() == true & average >= 4 & minScore >= 3) {
 			textArea.append("\nScholarship 1500");
 		}
-		else if (chckbxNewCheckBox.isSelected() == true & minScore < 4) {
-			textArea.append("\nStudent not receives scholarship, there is a rating less than 4");
+		else if (chckbxNewCheckBox.isSelected() == true & minScore >= 2) {
+			textArea.append("\nStudent not receives scholarship");
 		}
 		else 
-			textArea.append("\nStudent not receives scholarship");
-		System.out.println(minScore);
+			textArea.append("\nStudent not receives scholarship(kontrakt)");
 		
 	}
 
