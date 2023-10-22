@@ -32,6 +32,8 @@ public class MainGui {
 	private JLabel lblNewLabel;
 	private JButton btnNewButton;
 	private AbstractButton burl;
+	private JPanel panel_1;
+	private JPanel panel_2;
 
 	/**
 	 * Launch the application.
@@ -85,47 +87,54 @@ public class MainGui {
 		gbl_panel.columnWeights = new double[]{1.0, 0.0, Double.MIN_VALUE};
 		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
+		
+		panel_1 = new JPanel();
+		panel_1.setBorder(new TitledBorder(null, "Name", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		GridBagConstraints gbc_panel_1 = new GridBagConstraints();
+		gbc_panel_1.insets = new Insets(0, 0, 5, 5);
+		gbc_panel_1.fill = GridBagConstraints.VERTICAL;
+		gbc_panel_1.gridx = 0;
+		gbc_panel_1.gridy = 1;
+		panel.add(panel_1, gbc_panel_1);
 
 		txtFieldName = new JTextField();
+		panel_1.add(txtFieldName);
 		txtFieldName.setToolTipText("Name");
-		txtFieldName.setText("SomeStudent");
-		GridBagConstraints gbc_txtFieldName = new GridBagConstraints();
-		gbc_txtFieldName.insets = new Insets(0, 0, 5, 5);
-		gbc_txtFieldName.fill = GridBagConstraints.HORIZONTAL;
-		gbc_txtFieldName.gridx = 0;
-		gbc_txtFieldName.gridy = 1;
-		panel.add(txtFieldName, gbc_txtFieldName);
 		txtFieldName.setColumns(10);
-
-		chckbxNewCheckBox = new JCheckBox("Budjet");
-		GridBagConstraints gbc_chckbxNewCheckBox = new GridBagConstraints();
-		gbc_chckbxNewCheckBox.insets = new Insets(0, 0, 5, 0);
-		gbc_chckbxNewCheckBox.gridx = 1;
-		gbc_chckbxNewCheckBox.gridy = 2;
-		panel.add(chckbxNewCheckBox, gbc_chckbxNewCheckBox);
-
-		textFieldMark = new JTextField();
-		textFieldMark.setToolTipText("Marks");
-		textFieldMark.setText("60 75 90 100");
-		GridBagConstraints gbc_textFieldMark = new GridBagConstraints();
-		gbc_textFieldMark.insets = new Insets(0, 0, 5, 5);
-		gbc_textFieldMark.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textFieldMark.gridx = 0;
-		gbc_textFieldMark.gridy = 3;
-		panel.add(textFieldMark, gbc_textFieldMark);
-		textFieldMark.setColumns(10);
-
-		btnNewButton = new JButton("Calculate");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				cnCalculate();
-			}
-		});
-		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-		gbc_btnNewButton.insets = new Insets(0, 0, 0, 5);
-		gbc_btnNewButton.gridx = 0;
-		gbc_btnNewButton.gridy = 4;
-		panel.add(btnNewButton, gbc_btnNewButton);
+		
+				chckbxNewCheckBox = new JCheckBox("Budjet");
+				GridBagConstraints gbc_chckbxNewCheckBox = new GridBagConstraints();
+				gbc_chckbxNewCheckBox.anchor = GridBagConstraints.SOUTH;
+				gbc_chckbxNewCheckBox.insets = new Insets(0, 0, 5, 5);
+				gbc_chckbxNewCheckBox.gridx = 1;
+				gbc_chckbxNewCheckBox.gridy = 2;
+				panel.add(chckbxNewCheckBox, gbc_chckbxNewCheckBox);
+		
+		panel_2 = new JPanel();
+		panel_2.setBorder(new TitledBorder(null, "Marks", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
+		gbc_panel_2.insets = new Insets(0, 0, 5, 5);
+		gbc_panel_2.fill = GridBagConstraints.VERTICAL;
+		gbc_panel_2.gridx = 0;
+		gbc_panel_2.gridy = 3;
+		panel.add(panel_2, gbc_panel_2);
+		
+				textFieldMark = new JTextField();
+				panel_2.add(textFieldMark);
+				textFieldMark.setToolTipText("Marks");
+				textFieldMark.setColumns(10);
+		
+				btnNewButton = new JButton("Calculate");
+				btnNewButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						cnCalculate();
+					}
+				});
+				GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
+				gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
+				gbc_btnNewButton.gridx = 0;
+				gbc_btnNewButton.gridy = 4;
+				panel.add(btnNewButton, gbc_btnNewButton);
 
 		JScrollPane scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
@@ -134,7 +143,7 @@ public class MainGui {
 		gbc_scrollPane.gridy = 1;
 		frmZenenkoYelizaveta.getContentPane().add(scrollPane, gbc_scrollPane);
 
-		textArea = new JTextArea();
+                textArea = new JTextArea();
 		scrollPane.setViewportView(textArea);
 
 		lblNewLabel = new JLabel("Result of calcilation");
@@ -185,13 +194,12 @@ public class MainGui {
 		
 		int minScore = numbers[0];
 		
-		for (int i = 1; i < numbers.length; i++) {
+	for (int i = 1; i < numbers.length; i++) {
             if (numbers[i] < minScore) {
                 minScore = numbers[i]; 
             }
         }
-		
-		
+			
        int sum = 0;
 	    for (int number : numbers) {
 	        sum += number;
